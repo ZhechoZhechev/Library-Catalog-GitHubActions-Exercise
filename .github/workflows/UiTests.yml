@@ -19,19 +19,16 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20'
+        node-version: '14' # Adjust this to a valid Node.js version
 
     - name: Install dependencies
       run: npm install
 
-    - name: Start frontend
-      run: npm run start
-
-    - name: Reach server directory
-      run: cd server
-
-    - name: Reach server directory
-      run: node server.js
+    - name: Start frontend and server
+      run: |
+        npm run start &
+        cd server
+        node server.js
 
     - name: Wait for server to start
       run: sleep 10
