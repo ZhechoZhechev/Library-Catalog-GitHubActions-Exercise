@@ -192,7 +192,7 @@ test('Submit form with empty password', async ({ page }) => {
     expect(page.url()).toBe("http://localhost:3000/register");
 })
 
-test.only('Submit form with empty repeat password', async ({ page }) => {
+test('Submit form with empty repeat password', async ({ page }) => {
 
     await page.goto("http://localhost:3000/register");
     await page.waitForSelector("nav.navbar");
