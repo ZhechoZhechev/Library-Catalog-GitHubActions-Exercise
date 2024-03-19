@@ -1,4 +1,4 @@
-name: CI/CD
+name: Start app and run UI tests
 
 on:
   push:
