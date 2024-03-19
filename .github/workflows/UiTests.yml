@@ -33,10 +33,11 @@ jobs:
       run: |
         #cd server - not working
         node /home/runner/work/Library-Catalog-GitHubActions-Exercise/Library-Catalog-GitHubActions-Exercise/server/server.js &
-        sleep 5
+        sleep 5 &&
+        curl http://localhost:3030 -I
         
     - name: Install Playwright browsers
       run: npm run playwright-browsers
-      
+
     - name: Run tests with Playwright
       run: npm run ui-test
