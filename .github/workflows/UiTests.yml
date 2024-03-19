@@ -23,19 +23,19 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-
+      
+    - name: Start Frontend
+      run: |
+        npm run start &
+        sleep 5 &&
+        curl http://localhost:3000 -I
     - name: Start Backend
       run: |
         cd server &&
         npm run start-backend &
         sleep 5 &&
-        curl http://localhost:port -I
+        curl http://localhost:3030 -I
         
-    - name: Start Frontend
-      run: |
-        npm run start &
-        sleep 5 &&
-        curl http://localhost:port -I    
 
     - name: Run tests with Playwright
       run: npm run test
