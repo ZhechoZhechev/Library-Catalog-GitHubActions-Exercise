@@ -31,7 +31,7 @@ jobs:
         curl http://localhost:3000 -I
     - name: Start Backend
       run: |
-        cd server &&
+        cd server &
         npm run start-backend &
         sleep 5 &&
         curl http://localhost:3030 -I
