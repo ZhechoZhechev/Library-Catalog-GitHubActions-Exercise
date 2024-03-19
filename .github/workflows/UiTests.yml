@@ -35,6 +35,8 @@ jobs:
         sleep 5 &&
         curl http://localhost:3030 -I
         
-
+    - name: Install Playwright browsers
+      run: npm run playwright-browsers
+      
     - name: Run tests with Playwright
       run: npm run ui-test
