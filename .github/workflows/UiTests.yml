@@ -31,8 +31,7 @@ jobs:
         curl http://localhost:3000 -I
     - name: Start Backend
       run: |
-        cd server &
-        npm run start-backend &
+        node /home/runner/work/Library-Catalog-GitHubActions-Exercise/Library-Catalog-GitHubActions-Exercise/server/server.js
         sleep 5 &&
         curl http://localhost:3030 -I
         
