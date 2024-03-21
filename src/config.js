@@ -1,1 +1,1 @@
-const settings = { host: "https://library-catalog-githubactions-exercise.onrender.com" };
+export const settings = { host: "https://library-catalog-githubactions-exercise.onrender.com" };
