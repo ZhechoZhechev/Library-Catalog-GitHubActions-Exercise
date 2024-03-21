@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +31,7 @@ jobs:
         npm run start-frontend &
         sleep 5 &&
         curl http://localhost:3000 -I
-        
+
     - name: Start Backend
       run: |
         npm run start-backend &
@@ -43,3 +43,25 @@ jobs:
 
     - name: Run tests with Playwright
       run: npm run ui-test
+
+  deploy-be:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: build-test
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+            service-id: ${{ secrets.SERVICE_BE_ID }}
+            api-key: ${{ secrets.RENDER_TOKEN }}
+
+  deploy-fe:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: deploy-be
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+            service-id: ${{ secrets.SERVICE_FE_ID }}
+            api-key: ${{ secrets.RENDER_TOKEN }}
